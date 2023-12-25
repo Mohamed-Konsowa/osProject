@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  selector:
+    matchLabels:
+      name: any-value
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        name: any-value
+    spec:
+      containers:
+        - name: my-pods
+          image: mohamedkonsowa/project
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+          ports:
+            - containerPort: 80
